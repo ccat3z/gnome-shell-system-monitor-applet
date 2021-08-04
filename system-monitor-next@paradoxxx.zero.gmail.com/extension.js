@@ -2431,7 +2431,8 @@ export default class SystemMonitorExtension extends Extension {
             this._Schema.connect('changed::background', (schema, key) => {
                 this._Background = color_from_string(this._Schema.get_string(key));
             });
-            Main.panel._addToPanelBox('system-monitor', tray, 1, panel);
+            let children_len = Main.panel._rightBox.get_children().length;
+            Main.panel._addToPanelBox('system-monitor', tray, children_len - 1, panel);
 
             // The spacing adds a distance between the graphs/text on the top bar
             let spacing = this._Schema.get_boolean('compact-display') ? '1' : '4';
